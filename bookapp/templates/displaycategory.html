@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<body>
+<table style="width:100%">
+    <tr style="text-align:center">
+        <th>Category Name</th>
+        <th>Category Image</th>
+        <th>Category Description</th>
+        <th>Options</th>
+
+    </tr>
+
+    {% for i in data %}
+    <tr style="text-align:center">
+        <td>{{i.Name}}</td>
+        <td>
+            <img src="{{i.Image.url}}" height="100px" width="100px">
+        </td>
+        <td style="width:400px">{{i.Descript}}</td>
+        <td>
+            <form action="{% url 'editcatepage' dataid=i.id %}">
+                <button type="submit">Edit</button>
+            </form>
+        </td>
+        <td>
+            <form action="{% url 'delcatepage' dataid=i.id %}">
+                <button type="submit" class="btn1">Delete</button>
+            </form>
+        </td>
+
+
+    </tr>
+    {% endfor %}
+
+</table>
+
+
+</body>
+</html>
+{% endblock %}

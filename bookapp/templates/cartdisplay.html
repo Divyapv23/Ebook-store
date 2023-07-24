@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table style="width:100%">
+    <tr style="text-align:center">
+
+        <th>Product Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th colspan="4">Address</th>
+    </tr>
+    {% for i in data %}
+    <tr style="text-align:center">
+        <td>{{i.Name}}</td>
+        <td>{{i.Price}}</td>
+        <td>{{i.Quantity}}</td>
+        <td>{{i.Total}}</td>
+
+        {% for i in product %}
+        <td>{{i.Name}}</td>
+        <td>{{i.Address}},{{i.Zip}},{{i.State}}</td>
+        <td>{{i.Mail}}</td>
+        <td>{{i.Num}}</td>
+
+        {% endfor %}
+
+
+    </tr>
+    {% endfor %}
+
+</table>
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table style="width:100%">
+    <tr style="text-align:center">
+        <th>Book Name</th>
+        <th>Author Name</th>
+        <th>Category</th>
+        <th>Image</th>
+        <th>Language</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Options</th>
+    </tr>
+    {% for i in data %}
+    <tr style="text-align:center">
+        <td>{{i.Bname}}</td>
+        <td>{{i.Aname}}</td>
+        <td>{{i.Category}}</td>
+
+        <td>
+            <img src="{{i.Image.url}}" height="100px" width="100px">
+        </td>
+        <td>{{i.Lang}}</td>
+        <td>{{i.Descript}}</td>
+        <td>{{i.Price}}</td>
+        <td>
+            <form action="{% url 'editpdtpage' dataid=i.id %}">
+                <button type="submit">Edit</button>
+            </form>
+        </td>
+        <td>
+            <form action="{% url 'delpdt' dataid=i.id %}">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+
+
+    </tr>
+    {% endfor %}
+
+</table>
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Add Book Categories</h4>
+            <p class="card-description"> Basic Details </p>
+            <form class="forms-sample" method="POST" action="{% url 'categorydetails' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="exampleInputName1">Name</label>
+                    <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="Name">
+                </div>
+                <div class="form-group">
+                    <label>Image</label>
+                    <input type="file" class="file-upload-default">
+                    <div class="input-group col-xs-12">
+                        <input type="file" class="form-control file-upload-info" placeholder="Upload Image"
+                               name="Image">
+                        <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                          </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleTextarea1">Description</label>
+                    <textarea class="form-control" id="exampleTextarea1" rows="4" name="description"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                <button class="btn btn-dark">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+{% endblock %}
